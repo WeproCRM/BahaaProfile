@@ -13,7 +13,7 @@ import {
 
 export const GitHubPagesModal: React.FC<{ onClose: () => void }> = ({ onClose }) => {
   const [ghUser, setGhUser] = useState('bahaay3k');
-  const [ghRepo, setGhRepo] = useState('personal-instagram');
+  const [ghRepo, setGhRepo] = useState('BahaaProfile');
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedBash, setCopiedBash] = useState(false);
 
@@ -21,7 +21,7 @@ export const GitHubPagesModal: React.FC<{ onClose: () => void }> = ({ onClose })
 
 on:
   push:
-    branches: ['main']
+    branches: ['main', 'master']
   workflow_dispatch:
 
 permissions:
@@ -46,11 +46,15 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: 'npm'
+          node-version: 22
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          if [ -f package-lock.json ]; then
+            npm ci || npm install
+          else
+            npm install
+          fi
 
       - name: Build Application
         run: npm run build
