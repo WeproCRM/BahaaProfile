@@ -1,0 +1,6 @@
+{
+  "name": "Personal Instagram Portfolio & Grid Studio",
+  "description": "A customizable personal Instagram web app with dynamic multi-grid pages, responsive media gallery, profile customization, and admin panel ready for GitHub Pages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
